@@ -1,0 +1,682 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>(0) Python安裝及環境設定</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="d17afc8e-0674-4ba5-98d4-9fa2d8f73e91" class="page sans"><header><h1 class="page-title">(0) Python安裝及環境設定</h1><p class="page-description"></p></header><div class="page-body"><hr id="c2dcefe1-d3cc-461a-96e8-b3b2778d73bd"/><h2 id="b10bae43-9b9f-490a-84b7-4d0236d2d6aa" class="">回目錄 <a href="../Python%20%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8%209114bdc5f724440aa47b7c94e90652aa.html">點我</a></h2><hr id="ff073561-4db7-49ce-b228-5c5ffcdd3aff"/><h2 id="9fa3c328-221e-4fd6-9b7c-57d2d528c33e" class="">安裝Python</h2><p id="4a656d5d-733e-482d-9fc6-ff27543e00ca" class="">要學Python就要先裝Python</p><p id="54540039-0189-4483-a40e-89cca0578778" class="">這是廢話</p><p id="302f8f72-a9af-4205-8269-7efb951facb9" class="">所以先到 <a href="https://www.python.org/">https://www.python.org/</a></p><figure id="580774b7-9dd5-4158-9fb0-6a67543ebd24" class="image" style="text-align:left"><a href="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled.png"><img style="width:336px" src="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled.png"/></a></figure><p id="41bdee98-1cc0-4252-b464-af0e8a1c3835" class="">
+</p><p id="7b352ea4-4cb5-4ce5-8b26-6c7cecfe9114" class="">依照上面的方法下載 先按download 然後選擇Python 3.10.2 (或是最新版的 都可以)</p><p id="03802eb3-b56e-4145-aff5-9f624ffc818c" class="">下載好之後 找到他 然後把它點兩下打開</p><figure id="b2ac4be6-5239-4075-9553-f86aae80c98a" class="image" style="text-align:left"><a href="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%201.png"><img style="width:336px" src="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%201.png"/></a></figure><p id="5f84f5c6-0b04-4059-936b-99344b761c34" class="">先按下箭頭的 <strong>Add python.exe to PATH</strong></p><p id="392545ba-7a11-4c8b-a8df-5e1c93ef7126" class="">把它打勾之後 按上方的<strong>Install Now</strong></p><p id="1ee14d3b-5642-48e3-a9ea-64899b36821d" class="">然後給它跑 好了之後會長這樣</p><figure id="f153684a-ecf4-4070-88f1-e46d6c5cfa68" class="image" style="text-align:left"><a href="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%202.png"><img style="width:336px" src="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%202.png"/></a></figure><p id="16cf8eae-6e8f-4293-ac87-a3bea83ed4c0" class="">就代表成功了 按下箭頭所指的<strong>Close</strong></p><h2 id="8e2a2e04-33fe-4f39-a24c-cda2b312d967" class="">安裝整合開發環境</h2><p id="3c45ddf2-dd71-420a-89d8-1fed6b54f364" class="">但你以為只有這麼簡單喔 安裝好這個你要有地方寫啊</p><p id="ae5d7751-65f9-438d-9dcb-bbad98cddd20" class="">你當然也可以打開記事本像個87慢慢寫</p><p id="815782c8-2061-4435-8b51-e9b873e525cf" class="">或是用他那個難用到我差點流眼淚的IDLE (考證照要用那個 哭死)</p><p id="2a553ae5-9ded-47c6-a258-44e84d93c6ba" class="">或是你有更好的選擇 選擇一個十分優秀的<span style="border-bottom:0.05em solid">整合開發環境(IDE)</span></p><p id="dab4263b-bc85-48e8-a83e-0049d9c815a2" class=""> </p><p id="c242179c-c8d1-4e40-a409-cedf9ccc90d3" class="">所以在此 我推薦 <strong>Visual Studio Code (簡稱VS code)</strong>作為你的不二之選</p><p id="15218d8e-0757-4331-ade4-fd1a5920d445" class=""><a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p><figure id="b75fc2ca-1aee-427d-8b31-2e55c971e07b" class="image" style="text-align:left"><a href="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%203.png"><img style="width:336px" src="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%203.png"/></a></figure><p id="868810dd-3f76-4ed9-a9bd-dbe95305ce3f" class="">把這個Download按鈕按下去就對了</p><p id="a5cdba36-28d9-41f3-af78-6fa1c24908c3" class="">然後他就會下載</p><p id="b95c6467-e931-4c3b-978a-77e5eec07528" class="">如果瀏覽器提示你 這個軟體可能會損害你的裝置 請選擇保留檔案</p><p id="41c5ff6d-f8f0-40b0-b98b-95cf36d912ab" class="">它並不會帶給你的電腦任何的傷害</p><p id="e4c16044-f612-4bc7-b277-43f5988aa7f9" class="">
+</p><p id="382526af-ab8a-4ff1-acfb-9e8947ea3d91" class="">接下來的安裝我就不想再丟圖片了 就是 <strong>我同意→下一步→下一步→安裝</strong></p><p id="e3bed034-45f5-43c9-8684-8473e50da4f7" class="">然後說安裝成功就關掉</p><p id="9ebd42ce-346b-4201-a8ef-510ea0e774a3" class="">然後找到軟體本人 打開它</p><p id="f028b205-64e4-445d-82eb-5d83575239d1" class="">
+</p><p id="bd1f91dd-0293-4d0c-9bd8-40db68fa0308" class="">接著你會發現一片英文 根本看不懂</p><figure id="74f7faa0-12d0-485d-9a45-7693350f56fd" class="image" style="text-align:left"><a href="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%204.png"><img style="width:336px" src="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%204.png"/></a></figure><p id="ca1b56df-5fe0-44cb-af56-e50baf942239" class="">所以請照我的步驟 依序點開</p><p id="4ef9b74c-71cd-4450-81b2-0b94ce9d0253" class="">在2的地方輸入<strong>Chinese</strong></p><p id="62563c1a-9e41-4aa4-bcfd-955e438a3fca" class="">就會有繁體中文的延伸套件可以安裝</p><p id="b1f957b7-11ca-4a7e-8dec-f6356fce4bf5" class="">(我已經安裝了 所以他會顯示解除安裝)</p><figure id="c4585ed4-9ff8-4cc6-8211-295e12dc267f" class="image" style="text-align:left"><a href="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%205.png"><img style="width:336px" src="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%205.png"/></a></figure><p id="2ed19d1a-a1f1-43c8-bda9-bc9b3f425403" class="">安裝好之後 回到搜尋欄 輸入<strong>Python</strong></p><figure id="3007ef00-31f1-4722-acdc-9a48c119f8ce" class="image" style="text-align:left"><a href="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%206.png"><img style="width:336px" src="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%206.png"/></a></figure><p id="6a72e641-9d6b-4860-82d7-606a6f13fa06" class="">然後找到該套件 安裝</p><p id="372cad2e-608f-44f5-9f02-eb5be11e3db3" class="">等它安裝成功後 把<strong>Visual Studio Code</strong>關掉</p><p id="27ec9411-2735-4d5e-9151-a1dfc5b3afec" class="">再重開 這樣就配置好你的整合開發環境了</p><p id="48b7080d-143d-442a-ab11-2d2ebe7e2e98" class="">
+</p><h2 id="45618ea0-cf51-48d8-b8ae-5e0eaf8f24ab" class="">建立放檔案的地方</h2><figure id="de6d4994-2988-4fa7-92ba-ccb6933c70c3" class="image" style="text-align:left"><a href="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%207.png"><img style="width:336px" src="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%207.png"/></a></figure><p id="df943acb-350f-47a6-aa5c-a605d691cf0a" class="">重新打開後還是一臉問號</p><p id="688cce81-1e71-4a67-8e91-01e88e1a5f16" class="">到底什麼時候才能寫到程式</p><p id="35428bca-de4f-4648-9010-92a35e4cef9e" class="">其實就差一步而已了</p><p id="2ae570dd-6c2c-4c38-8891-001ed53714bb" class="">看到左邊的 <strong>開啟資料夾</strong>嗎</p><p id="f607e2f9-6fa7-47c1-b5e8-ac9dd58dae21" class="">先別點</p><p id="3a8a5401-cea2-4e85-ab35-1dc301d41dc3" class="">你可以在桌面或是任何你記得的地方 新增一個資料夾 名字可以亂取 </p><p id="91109629-2601-468c-949f-09123098aba6" class="">然後這個資料夾以後就是你放這些程式碼範例的地方了</p><p id="7bc7a02f-5ba2-4069-9ba3-91012c056e62" class="">
+</p><p id="fa2d298a-8de5-4e80-a79d-e07361e8ed03" class="">接著在按 <strong>開啟資料夾</strong></p><p id="033374e0-3da3-41c5-b31c-f4d5c56fae02" class="">依照路徑找到你新增的資料夾 開啟</p><p id="7d0c3b22-5e96-4b66-8317-46c45ed03555" class="">這樣就終於配置好了</p><figure id="b2b39279-0867-48b0-bf5c-02e4448248c3" class="image"><a href="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%208.png"><img style="width:1920px" src="(0)%20Python%E5%AE%89%E8%A3%9D%E5%8F%8A%E7%92%B0%E5%A2%83%E8%A8%AD%E5%AE%9A%20d17afc8e06744ba598d49fa2d8f73e91/Untitled%208.png"/></a></figure><p id="aae70df1-a397-4a77-a637-8f2cf088fe91" class="">接著按下箭頭所指方向 這是新增檔案的圖標</p><p id="4f685bf2-0e1a-4ba0-80ab-ad0249257c1c" class="">按一下 取檔名 副檔名要<strong>   “.py”</strong></p><p id="14cbe115-24e9-40bd-bb72-872ce0670c81" class=""><strong>檔案名稱.py</strong></p><p id="5d3b7c49-e911-49ff-a4f6-d3c3b7dae3f8" class="">舉例: main.py  first.py 之類的</p><p id="cbdc1d89-9cef-40cc-ba59-7b8933473dad" class="">檔名快樂取 但請注意一句話 現在可能聽不懂 但以後我會再提醒一次</p><p id="84f6e7b8-fb2f-464b-91af-a1dc3fe68e2d" class=""><strong>不要取跟任何一個函式或函式庫一樣的名字</strong></p><p id="59fe5d18-89ca-4ac7-8da8-9737d550b857" class="">為了避免這種悲劇 我建議一律都叫main.py</p><p id="92414d06-d2c2-4f1d-9241-6b675a318315" class="">main 主要的 adj</p><h2 id="fe8a7937-1201-4c58-99fc-81bc780d3e5d" class="">終於好了 恭喜你</h2><p id="6e731b7e-9de8-4096-8fb2-ad20a0b9d640" class="">
+</p></div></article></body></html>
